@@ -113,22 +113,9 @@ paths:
                           description: The unit of measure for the price.
                         isPrimaryMeterRegion:
                           type: boolean 
-                        	description: A flag indicating whether the region is primary or not. 
-                        armSkuName: string 
-                        	type: string 
-                        	description: The ARM SKU name of the service. 
-                        savingsPlan:type array 
-                        	items:type object 
-                        	properties:type:string 
-                        	enum:[1 Year, 3 Years] 
-                        	description:The term length for the savings plan. 
-                        	unitPrice:number 
-                        	format double 
-                        	description:The unit price per unit for the savings plan. 
-                        	retailPrice:number 
-                        	format double 
-                        	description:The retail price per unit for the savings plan. 
-                  NextPageLink:string 
-                  	type:string 
-                  	description:The link to get the next page of results. 
+                          description: A flag indicating whether the region is primary or not. 
+                        armSkuName:
+                          type: string 
+                          description: The ARM SKU name of the service. 
+                        
 
