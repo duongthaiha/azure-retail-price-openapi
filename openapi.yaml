@@ -111,16 +111,12 @@ paths:
                         unitOfMeasure:
                           type: string
                           description: The unit of measure for the price.
-                        type:
-                          type:string 
-                          enum:[Consumption, Reservation, DevTestConsumption, DevTestReservation]
-                          description:The pricing model for the service. 
-                        isPrimaryMeterRegion:boolean 
-                        	type:boolean 
-                        	description:A flag indicating whether the region is primary or not. 
-                        armSkuName:string 
-                        	type:string 
-                        	description:The ARM SKU name of the service. 
+                        isPrimaryMeterRegion:
+                          type: boolean 
+                        	description: A flag indicating whether the region is primary or not. 
+                        armSkuName: string 
+                        	type: string 
+                        	description: The ARM SKU name of the service. 
                         savingsPlan:type array 
                         	items:type object 
                         	properties:type:string 

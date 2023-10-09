@@ -9,7 +9,7 @@
     },
     "api": {
         "type": "openapi",
-        "url": "http://localhost:3333/openapi.yaml"
+        "url": "https://raw.githubusercontent.com/duongthaiha/azure-retail-price-openapi/main/openapi.yaml"
     },
     "logo_url": "http://localhost:3333/logo.png",
     "contact_email": "support@example.com",
