@@ -1,0 +1,138 @@
+openapi: 3.0.0
+info:
+  title: Azure Retail Prices REST API
+  description: An unauthenticated API to get retail prices for all Azure services.
+  version: 2023-01-01-preview
+servers:
+  - url: https://prices.azure.com/api/retail/prices
+paths:
+  /:
+    get:
+      summary: Get a list of retail prices for Azure services
+      parameters:
+        - name: api-version
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [2023-01-01-preview]
+          description: The API version to use.
+        - name: $filter
+          in: query
+          required: false
+          schema:
+            type: string
+          description: The OData filter expression to apply to the response.
+        - name: $skiptoken
+          in: query
+          required: false
+          schema:
+            type: string
+          description: The continuation token to get the next page of results.
+      responses:
+        '200':
+          description: A list of retail prices for Azure services.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  BillingCurrency:
+                    type: string
+                    description: The currency code used for billing.
+                  CustomerEntityId:
+                    type: string
+                    description: The customer entity identifier.
+                  CustomerEntityType:
+                    type: string
+                    description: The customer entity type.  
+                  Items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        currencyCode:
+                          type: string
+                          description: The currency code for the retail price.
+                        tierMinimumUnits:
+                          type: number
+                          format: double
+                          description: The minimum number of units required to get the tiered price.
+                        retailPrice:
+                          type: number
+                          format: double
+                          description: The retail price per unit.
+                        unitPrice:
+                          type: number
+                          format: double
+                          description: The unit price per unit.
+                        armRegionName:
+                          type: string
+                          description: The ARM region name of the service.
+                        location:
+                          type: string
+                          description: The location of the service.
+                        effectiveStartDate:
+                          type: string
+                          format: date-time
+                          description: The start date of the price in UTC.
+                        meterId:
+                          type: string
+                          format: uuid
+                          description: The unique identifier of the meter.
+                        meterName:
+                          type: string
+                          description: The name of the meter.
+                        productId:
+                          type: string
+                          description: The product identifier of the service.
+                        skuId:
+                          type: string
+                          description: The SKU identifier of the service.
+                        availabilityId:
+                          type: string
+                          nullable: true
+                          description: The availability identifier of the service.
+                        productName:
+                          type: string
+                          description: The name of the product.
+                        skuName:
+                          type: string
+                          description: The name of the SKU.
+                        serviceName:
+                          type: string
+                          description: The name of the service.
+                        serviceId:
+                          type: string
+                          description: The service identifier of the service.
+                        serviceFamily:
+                          type: string
+                          description: The service family of the service.
+                        unitOfMeasure:
+                          type: string
+                          description: The unit of measure for the price.
+                        type:
+                          type:string 
+                          enum:[Consumption, Reservation, DevTestConsumption, DevTestReservation]
+                          description:The pricing model for the service. 
+                        isPrimaryMeterRegion:boolean 
+                        	type:boolean 
+                        	description:A flag indicating whether the region is primary or not. 
+                        armSkuName:string 
+                        	type:string 
+                        	description:The ARM SKU name of the service. 
+                        savingsPlan:type array 
+                        	items:type object 
+                        	properties:type:string 
+                        	enum:[1 Year, 3 Years] 
+                        	description:The term length for the savings plan. 
+                        	unitPrice:number 
+                        	format double 
+                        	description:The unit price per unit for the savings plan. 
+                        	retailPrice:number 
+                        	format double 
+                        	description:The retail price per unit for the savings plan. 
+                  NextPageLink:string 
+                  	type:string 
+                  	description:The link to get the next page of results. 
+
